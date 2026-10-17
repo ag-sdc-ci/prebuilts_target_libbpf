@@ -1,0 +1,25 @@
+{
+	"provideLibs": [	
+		    "libbpf_minimal-x86_64-v2.so",
+		    "libbpf_minimal.so",
+		    "libdummy_binary_libbpf-minimal-x86_64-v2.so.so",
+		    "libdummy_binary_libbpf-minimal.a-x86_64-v2.so",
+		    "libdummy_binary_libbpf-minimal.a.so",
+		    "libdummy_binary_libbpf-minimal.so.so",
+		    "libdummy_binary_libbpf.a-x86_64-v2.so",
+		    "libdummy_binary_libbpf.a.so",
+		    "libdummy_ext_libbpf-x86_64-v2.so",
+		    "libdummy_ext_libbpf.so",
+		    "libdummy_headers_ext_libbpf-x86_64-v2.so",
+		    "libdummy_headers_ext_libbpf.so",
+		    "libdummy_shared_libbpf-x86_64-v2.so",
+		    "libdummy_shared_libbpf.so"
+	],
+	"requireLibs": [	
+		    "libc++_shared.so",
+		    "libc.so",
+		    "libdl.so",
+		    "libm.so"
+	],
+	"visible": true
+}

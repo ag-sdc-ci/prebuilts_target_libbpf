@@ -1,0 +1,82 @@
+// Auto-generated prebuilt APEX Blueprint for external/libbpf
+// Staged from Extractive APEX package: ext-libbpf (org.blisslabs.ag.ext.libbpf)
+
+package {
+    default_applicable_licenses: ["external_libbpf_license"],
+}
+
+license {
+    name: "external_libbpf_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-BSD-2-Clause",
+        "SPDX-license-identifier-Linux-syscall-note",
+    ],
+    license_text: [
+        "LICENSE.BSD-2-Clause",
+    ],
+}
+
+genrule {
+    name: "libbpf_headers",
+    srcs: [
+        "include/bpf/*.h",
+    ],
+    cmd: "mkdir -p $(genDir)/bpf && cp $(in) $(genDir)/bpf/",
+    out: [
+        "bpf/bpf_core_read.h",
+        "bpf/bpf_endian.h",
+        "bpf/bpf.h",
+        "bpf/bpf_helper_defs.h",
+        "bpf/bpf_helpers.h",
+        "bpf/bpf_tracing.h",
+        "bpf/btf.h",
+        "bpf/hashmap.h",
+        "bpf/libbpf_common.h",
+        "bpf/libbpf.h",
+        "bpf/libbpf_internal.h",
+        "bpf/libbpf_legacy.h",
+        "bpf/libbpf_version.h",
+        "bpf/nlattr.h",
+        "bpf/skel_internal.h",
+        "bpf/relo_core.h",
+    ],
+}
+
+cc_prebuilt_library_static {
+    name: "libbpf",
+    defaults: ["elfutils_transitive_defaults"],
+    host_supported: true,
+    srcs: ["lib/libbpf.a"],
+    export_include_dirs: [
+        "include",
+        "include/uapi",
+    ],
+    generated_headers: ["libbpf_headers"],
+    export_generated_headers: ["libbpf_headers"],
+    visibility: [
+        "//external/bpftool",
+        "//external/bcc/libbpf-tools",
+        "//external/dwarves",
+        "//external/stg",
+    ],
+}
+
+cc_prebuilt_library {
+    name: "libbpf_minimal",
+    defaults: ["elfutils_transitive_defaults"],
+    vendor_available: true,
+    native_bridge_supported: true,
+    shared: {
+        srcs: ["lib/libbpf_minimal.so"],
+    },
+    static: {
+        srcs: ["lib/libbpf_minimal.a"],
+    },
+    export_include_dirs: [
+        "include",
+        "include/uapi",
+    ],
+    generated_headers: ["libbpf_headers"],
+    export_generated_headers: ["libbpf_headers"],
+}
